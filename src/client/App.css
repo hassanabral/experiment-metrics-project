@@ -1,0 +1,206 @@
+.app {
+  font-family: sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1 {
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* Stats Panel */
+.stats-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.stat-card h4 {
+  margin: 0 0 0.5rem 0;
+  color: #555;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+}
+
+.stat-detail {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.25rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.tag {
+  display: inline-block;
+  background: #e8e8ff;
+  color: #444;
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+}
+
+.status-counts {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.status-count {
+  font-size: 0.85rem;
+}
+
+/* Layout */
+.main-layout {
+  display: flex;
+  gap: 2rem;
+}
+
+.table-section {
+  flex: 2;
+}
+
+.metric-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+  background: #f5f5f5;
+  font-weight: 600;
+}
+
+tr:hover {
+  background: #f0f7ff;
+  cursor: pointer;
+}
+
+tr.selected {
+  background: #d0e8ff;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-finished { background: #d4edda; color: #155724; }
+.status-running { background: #cce5ff; color: #004085; }
+.status-failed { background: #f8d7da; color: #721c24; }
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding: 0.5rem 0;
+}
+
+.pagination button {
+  padding: 0.4rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: #f0f0f0;
+}
+
+.page-info {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+/* Metric Chart */
+.metric-card {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.metric-card h3 {
+  margin-top: 0;
+}
+
+.metric-table {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.metric-table table {
+  font-size: 0.8rem;
+}
+
+.metric-selector {
+  margin-bottom: 1rem;
+}
+
+.metric-selector select {
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.loading {
+  color: #666;
+  font-style: italic;
+  padding: 1rem;
+}
+
+.empty-state {
+  color: #999;
+  font-style: italic;
+  padding: 2rem;
+  text-align: center;
+}
