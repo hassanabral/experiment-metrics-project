@@ -57,14 +57,14 @@ export function RunsTable({ projectId, selectedRunId, onSelectRun }: RunsTablePr
     setLimit(5)
   }
 
-  const fetchRuns = async (projectId: string) => {
+  const fetchRuns = async (projectId: string, cursor?: string) => {
     try {
       setLoading(true)
 
       // build query params
       const qParams = new URLSearchParams()
       qParams.append('projectId', projectId)
-      if (nextCursor) qParams.append('cursor', nextCursor)
+      if (cursor) qParams.append('cursor', cursor)
       if (limit) qParams.append('limit', String(limit))
 
       // fetch paginated project runs
@@ -96,19 +96,20 @@ export function RunsTable({ projectId, selectedRunId, onSelectRun }: RunsTablePr
 
   useEffect(() => {
     fetchRuns(projectId)
-  }, [projectId, cursorHistory])
+  }, [projectId])
 
   const onClickNext = () => {
     if (nextCursor) {
       setCursorHistory(prev => [...prev, nextCursor])
+      fetchRuns(projectId, nextCursor)
     }
   }
 
   const onClickPrev = () => {
     if (cursorHistory.length) {
       const prev = cursorHistory.at(-2)
-      setNextCursor(prev)
       setCursorHistory(cursorHistory.slice(0, -1))
+      fetchRuns(projectId, prev)
     }
   }
 
@@ -149,7 +150,7 @@ export function RunsTable({ projectId, selectedRunId, onSelectRun }: RunsTablePr
               <td>{run.summary?.accuracy ? `${(run.summary?.accuracy * 100).toFixed(1)}%` : ''}</td>
               <td>{run.summary?.loss?.toFixed(3) ?? ''}</td>
               <td>{run.summary.epochs}</td>
-              <td>{run.tags.map(tag => (<span key={tag} className={'.tag'}>{tag}</span>))}</td>
+              <td>{run.tags.map(tag => (<span key={tag} className={'tag'}>{tag}</span>))}</td>
             </tr>))
           }
         </tbody>
@@ -161,8 +162,8 @@ export function RunsTable({ projectId, selectedRunId, onSelectRun }: RunsTablePr
           Previous
         </button>
         <span className="page-info">
-          {/* TODO: Show "Showing X-Y of Z runs" */}
-          Implement pagination
+          {/* Show "Showing X-Y of Z runs" */}
+          Showing {cursorHistory.at(-1) ?? '0'}-{nextCursor ?? totalCount} of {totalCount} runs
         </span>
         <button disabled={nextCursor === undefined} onClick={onClickNext}>
           Next

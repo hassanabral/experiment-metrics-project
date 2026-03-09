@@ -107,7 +107,7 @@ export class MetricsAPIManager {
        const avgAccuracy = finishedRuns.map(run => run.summary.accuracy).reduce((a, c) => a + c, 0) / finishedRuns.length || 0
 
        // best accuracy
-       const bestAccuracy = finishedRuns.reduce(
+       const bestAccuracy = finishedRuns.length > 0 ? finishedRuns.reduce(
         (accum, cur) => {
           if (cur.summary.accuracy > accum.accuracy) {
             return { runId: cur.id, runName: cur.name, accuracy: cur.summary.accuracy }
@@ -115,7 +115,7 @@ export class MetricsAPIManager {
           return accum
         }, 
        { runId: finishedRuns[0].id, runName: finishedRuns[0].name, accuracy: finishedRuns[0].summary.accuracy }
-      )
+      ) : { runId: '', runName: '', accuracy: 0}
 
       // average training time of FINISHED runs only (in seconds)
       const avgTrainingTime = finishedRuns.map(run => run.summary.trainingTime).reduce((a, c) => a + c, 0) / finishedRuns.length || 0

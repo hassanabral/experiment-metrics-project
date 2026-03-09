@@ -51,7 +51,7 @@ export async function getRunsPage(req: Request, res: Response) {
 export async function getRunStats(req: Request, res: Response) {
   try {
     console.info('Backend::API::getRunStats')
-    const projectId = req.query.projectId?.toString() ?? undefined
+    const projectId = req.query.projectId?.toString()
 
     if (!projectId) return res.status(400).json({error: "projectId is required"})
 
