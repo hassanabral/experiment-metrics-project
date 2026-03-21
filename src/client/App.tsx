@@ -7,14 +7,8 @@ import { MetricChart } from "./components/MetricChart"
 
 const PROJECT_ID = "llm-finetune"
 
-/**
- * Root application component.
- *
- * TODO: Add state to track the currently selected run ID (string | null).
- * Pass selectedRunId to MetricChart and an onSelectRun callback to RunsTable.
- */
+/** Root application component. */
 function App() {
-  // TODO: Add state for selectedRunId
   const [selectedRunId, setSelectedRunId] = useState<string | null>(null)
 
   return (
@@ -26,11 +20,9 @@ function App() {
 
       <div className="main-layout">
         <div className="table-section">
-          {/* TODO: Pass onSelectRun and selectedRunId props */}
           <RunsTable projectId={PROJECT_ID} selectedRunId={selectedRunId} onSelectRun={setSelectedRunId}/>
         </div>
         <div className="metric-section">
-          {/* TODO: Pass selectedRunId prop */}
           <MetricChart selectedRunId={selectedRunId} />
         </div>
       </div>

@@ -9,38 +9,8 @@ interface RunsTableProps {
   onSelectRun: (runId: string) => void
 }
 
-/**
- * Displays a paginated table of experiment runs.
- *
- * TODO 1: Add state for:
- *   - runs: RunSummary[]
- *   - loading: boolean
- *   - nextCursor: string | undefined
- *   - totalCount: number
- *   - cursorHistory: string[] — stack of previous cursors for "Previous" navigation
- *
- * TODO 2: Implement a fetchRuns(cursor?) function
- *   - Fetch from: GET /api/runs?projectId={projectId}&limit=5&cursor={cursor}
- *   - Parse JSON and update: runs, nextCursor, totalCount
- *   - Set loading state appropriately
- *
- * TODO 3: Call fetchRuns() on mount (with no cursor)
- *
- * TODO 4: Implement "Next Page" button
- *   - Push the current cursor onto cursorHistory before fetching
- *   - Fetch with nextCursor
- *
- * TODO 5: Implement "Previous Page" button
- *   - Pop the last cursor from cursorHistory
- *   - Fetch with that cursor
- *
- * TODO 6: Display "Showing X-Y of Z runs" in the pagination area
- *   - X = (page number - 1) * pageSize + 1
- *   - Y = X + runs.length - 1
- *   - Z = totalCount
- *
- * TODO 7: Wire up row click to call onSelectRun, highlight selected row
- */
+/** Displays a paginated table of experiment runs. */
+
 export function RunsTable({ projectId, selectedRunId, onSelectRun }: RunsTableProps) {
   // Add state variables
   const [runs, setRuns] = useState<RunSummary[]>([])

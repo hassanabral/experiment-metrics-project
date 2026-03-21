@@ -5,16 +5,7 @@ const manager = new MetricsAPIManager()
 
 /**
  * Handler: Get a paginated list of runs for a project.
- *
  * Route: GET /api/runs?projectId=llm-finetune&cursor=5&limit=5
- *
- * TODO: Implement this handler
- *   - Read projectId, cursor, and limit from query params
- *   - If projectId is missing, return 400
- *   - Call manager.getRunsPage() with the parameters
- *   - Return the result as JSON: { runs, nextCursor, totalCount }
- *
- * Note: limit should be parsed as a number (parseInt). cursor is a string.
  */
 export async function getRunsPage(req: Request, res: Response) {
   console.info('Backend::API::getRunsPage')
@@ -39,14 +30,7 @@ export async function getRunsPage(req: Request, res: Response) {
 
 /**
  * Handler: Get aggregated statistics for all runs in a project.
- *
  * Route: GET /api/runs/stats?projectId=llm-finetune
- *
- * TODO: Implement this handler
- *   - Read projectId from query params
- *   - If projectId is missing, return 400
- *   - Call manager.getRunStats()
- *   - Return the stats as JSON
  */
 export async function getRunStats(req: Request, res: Response) {
   try {
@@ -66,14 +50,7 @@ export async function getRunStats(req: Request, res: Response) {
 
 /**
  * Handler: Get the metric time-series for a run.
- *
  * Route: GET /api/runs/:runId/metrics/:metricName
- *
- * TODO: Implement this handler
- *   - Read runId and metricName from route params
- *   - Call manager.getMetricHistory()
- *   - If the result is an empty array, return 404
- *   - Otherwise return the metric points as JSON
  */
 export async function getMetricHistory(req: Request, res: Response) {
   console.info('Backend::API::getMetricHistory')

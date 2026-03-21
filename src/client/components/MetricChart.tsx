@@ -6,25 +6,8 @@ const API_BASE_URL = "/api"
 /**
  * Displays the metric time-series for a selected run as an HTML table.
  *
- * Props (you'll need to define these):
+ * Props:
  *   - selectedRunId: string | null — the run to show metrics for
- *
- * TODO 1: Add state for:
- *   - metricPoints: MetricPoint[]
- *   - loading: boolean
- *   - metricName: string (default "accuracy")
- *
- * TODO 2: Use useEffect to fetch metric history when selectedRunId or metricName changes
- *   - If selectedRunId is null, clear metricPoints and return
- *   - Fetch from: GET /api/runs/{selectedRunId}/metrics/{metricName}
- *   - Set loading state appropriately
- *   - Handle 404 (no metric data) by setting metricPoints to empty array
- *
- * TODO 3: Render the metric selector dropdown (pre-built below, just wire the state)
- *
- * TODO 4: Render the metric data as a table showing step and value columns
- *
- * Hint: The display JSX below is mostly pre-built. Focus on the state and data fetching.
  */
 
 type Props = {

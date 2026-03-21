@@ -18,22 +18,13 @@ interface StatsPanelProps {
 /**
  * Displays aggregated statistics for a project's runs.
  *
- * TODO 1: Add state for `stats` (StatsData | null) and `loading` (boolean)
- *
- * TODO 2: Use useEffect to fetch stats when the component mounts
- *   - Fetch from: GET /api/runs/stats?projectId={projectId}
- *   - Set loading state appropriately
- *   - Parse JSON and update stats state
- *
  * The display cards below are pre-built — once you populate the `stats` state,
  * they will render automatically.
  */
 export function StatsPanel({ projectId }: StatsPanelProps) {
-  // TODO: Add state for stats and loading
   const [stats, setStats] = useState<StatsData | null>(null)
   const [loading, setLoading] = useState(false)
 
-  // TODO: Fetch stats on mount
   useEffect(() => {
     const fetchProjectRunStats = async (projectId: string) => {
       try {
@@ -69,7 +60,7 @@ export function StatsPanel({ projectId }: StatsPanelProps) {
     return (
       <div className="stats-panel">
         <div className="stat-card">
-          <p className="empty-state">Implement the TODO to load stats</p>
+          <p className="empty-state">No stats available</p>
         </div>
       </div>
     )
